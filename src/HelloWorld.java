@@ -1,5 +1,3 @@
-package java_miscellaneous;
-
 public class HelloWorld
 {
     public static void main(String[] args)
