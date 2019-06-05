@@ -10,6 +10,14 @@ import java.util.LinkedList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+/**
+ * <p>
+ * To deassemble resulting class files recursively:
+ * </p>
+ * <code>
+ * find . -name "*class" -exec sh -c 'javap -v "$1" > "${1%.class}.pseudojava"' _ {} \;
+ * </code>
+ */
 public class Unpacker
 {
     private static final byte[] BUFFER = new byte[Integer.getInteger("BUFFER_SIZE", 4096)];
