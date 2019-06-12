@@ -9,6 +9,8 @@ public class LeakThreadLocal
         }
     };
 
+    private static ThreadLocalSubclass myThreadLocalFromSubclass = new ThreadLocalSubclass();
+
     public static void main(String[] args) throws Throwable
     {
         System.out.println("Started ThreadLocal: " + myThreadLocal.get());
@@ -24,6 +26,7 @@ public class LeakThreadLocal
         public void run()
         {
             myThreadLocal.set("Hello World");
+            myThreadLocalFromSubclass.set("Hello World");
 
             System.out.println("MyThread ThreadLocal: " + myThreadLocal.get());
 
@@ -41,6 +44,15 @@ public class LeakThreadLocal
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    public static class ThreadLocalSubclass extends ThreadLocal<String>
+    {
+        @Override
+        protected String initialValue()
+        {
+            return "ThreadLocalSubclass initialValue";
         }
     }
 }
