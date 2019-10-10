@@ -30,7 +30,7 @@ public class Unpacker
 
     public static void main(String[] args) throws Throwable
     {
-        println("Unpacker version 0.1.0");
+        println("Unpacker version 0.1.1");
         String dir = ".";
         if (args.length > 0)
         {
@@ -84,6 +84,11 @@ public class Unpacker
 
     private static void unpack(LinkedList<File> filesToProcess, File file) throws Throwable
     {
+        if (file.length() == 0) {
+            println("Skipping 0-byte " + file.getAbsolutePath());
+            return;
+        }
+        
         println("Unpacking " + file.getAbsolutePath());
 
         ZipFile zip = null;
