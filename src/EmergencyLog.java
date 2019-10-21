@@ -10,6 +10,8 @@ import java.util.Date;
  * logging. This will write to elog.txt in the JVM's current working directory.
  * The print* methods will always write but the debug* methods only write if
  * -Demergencylogdebug=true is set.
+ * 
+ * @author kevin.grigorenko@us.ibm.com
  */
 public class EmergencyLog {
 	/**
