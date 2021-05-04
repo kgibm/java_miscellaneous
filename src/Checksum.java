@@ -12,12 +12,10 @@ import java.security.NoSuchAlgorithmException;
  */
 public class Checksum {
 	public static final String DEFAULT_CHECKSUM_ALGORITHM = System.getProperty("DEFAULT_CHECKSUM_ALGORITHM", "MD5");
-	public static final String MD5SUM_PATH = System.getProperty("MD5SUM_PATH", "/usr/bin/md5sum");
 
 	public static void main(String[] args) throws Throwable {
 		File file = new File(args[0]);
 		System.out.println(checksum(file));
-		System.out.println(osChecksum(file));
 	}
 
 	public static String checksum(File file) throws NoSuchAlgorithmException, IOException {
@@ -40,9 +38,5 @@ public class Checksum {
 		sb.append("  ");
 		sb.append(file.getAbsolutePath());
 		return sb.toString();
-	}
-
-	public static String osChecksum(File file) throws IOException, InterruptedException {
-		return ShellCommand.exec(MD5SUM_PATH, file.getAbsolutePath());
 	}
 }
